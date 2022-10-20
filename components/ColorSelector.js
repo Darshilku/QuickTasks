@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
   },
-  coloButton: {
+  colorButton: {
       height: 32,
       width:32,
       borderColor: Colors.lightGray,
