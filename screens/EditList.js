@@ -34,7 +34,7 @@ export default ({navigation, route}) => {
                   selectingColor={"transparent"}
                   autoFocus={true}
                   Value={title}
-                  onChangeText={(text) => {setTitle (Text); setValidity (true);}}
+                  onChangeText={(text) => {setTitle(text); setValidity(true);}}
                   placeholder={"New List Name"}
                   maxLength={30}
                   style={[styles.input, { outline: "none" }]}
