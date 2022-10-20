@@ -41,7 +41,7 @@ export default ({navigation}) => {
         }
 
   const removeItemFromLists = (index) => {
-          lists.splice(lists, 1);
+          lists.splice(index, 1);
           setLists([...lists]);
         }
 
