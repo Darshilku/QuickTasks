@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Colors from "./constants/colors";
+import Colors from "./constants/Colors";
 import Home from "./screens/Home";
 import ToDoList from "./screens/ToDoList";
 import EditList from "./screens/EditList";
