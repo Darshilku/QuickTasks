@@ -1,7 +1,7 @@
 import React, {useLayoutEffect, useState} from "react";
 import { StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
-import Colors from "../constants/colors";
+import Colors from "../constants/Colors";
 
 const ListButton = ({title, color, onPress, onDelete, onOptions}) => {
   return (
@@ -21,9 +21,19 @@ const ListButton = ({title, color, onPress, onDelete, onOptions}) => {
 
 const renderAddListIcon = (navigation, addItemToLists) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate("Edit", {saveChanges: addItemToLists})}>
+      <View stlye={{ flexDirection: "row"}}>
+          <TouchableOpacity style={{justifyCOntent: "center", marginRight: 4}}
+          onPress={() => navigation.navigate("Settings")}>
+      <Ionicons name="settings" size={16}/>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Edit", {saveChanges: addItemToLists})
+      }
+      style={{justifyCOntent: "center", marginRight: 8}}
+      
+      >
           <Text style={styles.icon}>+</Text>
       </TouchableOpacity>
+      </View>
     )
 }
 
