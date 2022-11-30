@@ -1,7 +1,7 @@
 import React, {useState, useLayoutEffect} from "react";
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import ToDoItem from "../components/ToDoItem";
-import Colors from "../constants/colors";
+import Colors from "../constants/Colors";
 
 const renderAddListIcon = (addItemToLists) => {
     return (

@@ -1,8 +1,9 @@
 import {CommonActions} from "@react-navigation/native";
 import React, {useState} from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
-import Colors from "../constants/colors";
+import Colors from "../constants/Colors";
 import ColorSelector from "../components/ColorSelector";
+import Button from "../components/Button"
 
 const colorList = [
     "blue",
@@ -26,7 +27,7 @@ export default ({navigation, route}) => {
       <View style={styles.container}>
           <View>
           <View style={{flexDirection: "row"}}>
-              <Text style = {styles.label}> List Name </Text>
+              <Text style={styles.label}> List Name </Text>
               {!isValid && <Text style={{marginLeft: 4, color: Colors.red, fontSize: 15}}> List Name cannot be empty</Text>}
           </View>
               <TextInput
@@ -34,7 +35,8 @@ export default ({navigation, route}) => {
                   selectingColor={"transparent"}
                   autoFocus={true}
                   Value={title}
-                  onChangeText={(text) => {setTitle(text); setValidity(true);}}
+                  onChangeText={(text) => {setTitle(text); setValidity(true);
+                }}
                   placeholder={"New List Name"}
                   maxLength={30}
                   style={[styles.input, { outline: "none" }]}
@@ -49,19 +51,19 @@ export default ({navigation, route}) => {
                 colorOptions={colorList}
               />
           </View>
-          <TouchableOpacity style={styles.saveButton} onPress={() => {
+            <Button text="Save"
+            onPress={() => {
               if (title.length > 1) {
                   route.params.saveChanges({title, color});
                   navigation.dispatch(CommonActions.goBack());
-                }
-                else {
+                } else {
                     setValidity(false);
                 }
-          }}>
-              <Text style={{color: "white", fontSize: 24, fontWeight: "bold"}}> Save </Text>
-          </TouchableOpacity>
-      </View>);
-}
+          }}
+        />
+    </View>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
