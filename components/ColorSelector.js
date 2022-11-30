@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { StyleSheet, View, TouchableOpacity} from 'react-native';
-import Colors from "../constants/colors";
+import Colors from "../constants/Colors";
 
 const ColorButton = ({onPress, isSelected, color}) => {
     return(

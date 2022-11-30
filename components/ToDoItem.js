@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native';
 import Checkbox from "./Checkbox";
-import Colors from "../constants/colors";
+import Colors from "../constants/Colors";
 
 const EditableText = ({isChecked, onChangeText, text, isNewItem}) => {
   const [isEditMode, setEditMode] = useState(isNewItem);
