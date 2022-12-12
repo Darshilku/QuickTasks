@@ -2,12 +2,15 @@ import React, {useState} from "react";
 import { StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native';
 import Checkbox from "./Checkbox";
 import Colors from "../constants/Colors";
+import DatePicker from 'react-datepicker'
+import '../node_modules/react-datepicker/dist/react-datepicker.css'
 
 const EditableText = ({isChecked, onChangeText, text, isNewItem}) => {
   const [isEditMode, setEditMode] = useState(isNewItem);
+  
   return (<TouchableOpacity onPress={() => !isChecked && setEditMode(true)}>
       {isEditMode ?
-      <TextInput
+        <TextInput
           underlineColorAndroid={"transparent"}
           selectingColor={"transparent"}
           autoFocus={true}
@@ -17,8 +20,9 @@ const EditableText = ({isChecked, onChangeText, text, isNewItem}) => {
           onSubmitEditing={() => {}}
           maxLength={30}
           style={[styles.input, { outline: "none" }]}
-          onBlur={() => setEditMode(false)}
-      /> :
+         // onBlur={() => setEditMode(false)}
+        /> 
+         :
       <Text style={[styles.text,
           {color: isChecked ? Colors.lightGray : Colors.black,
            textDecoration: isChecked ? "line-through" : "none"
@@ -30,7 +34,28 @@ const EditableText = ({isChecked, onChangeText, text, isNewItem}) => {
   </TouchableOpacity>);
 }
 
-export default ({text, isChecked, onChecked, onChangeText, onDelete, isNewItem}) => {
+const DueDate = ({isChecked, isNewItem}) => {
+    const [isEditMode, setEditMode] = useState(isNewItem);
+    const [selectedDueDate, setDueDate] = useState();
+   
+   return (<TouchableOpacity onPress={() => !isChecked && setEditMode(true)}>
+    {
+        <DatePicker
+           placeholder={"Select Due Date"} 
+           selected={selectedDueDate}
+           onChange={(date) => setDueDate(date)}
+           dateFormat='MM/dd/yyyy'
+           minDate={new Date()}
+           showYearDropdown
+           scrollableYearDropdown
+           isClearable
+           onSubmitEditing={() => {}}
+      />
+    }
+  </TouchableOpacity>);
+}
+
+export default ({text, isChecked, onChecked, onChangeText, onDelete, isNewItem, selectedDueDate}) => {
 
   return (
     <View style={styles.container}>
@@ -41,7 +66,8 @@ export default ({text, isChecked, onChecked, onChangeText, onDelete, isNewItem})
               onChangeText={onChangeText}
               isChecked={isChecked}
               isNewItem={isNewItem}
-              />
+           />
+            <DueDate selectedDueDate={selectedDueDate}/>
         </View>
         <TouchableOpacity onPress = {onDelete}>
             <Text style={[styles.icon, {color:Colors.red}]}>X</Text>
@@ -75,4 +101,5 @@ const styles = StyleSheet.create({
         padding: 3,
         fontSize: 16,
     },
+    
 });

@@ -5,7 +5,7 @@ import Colors from "../constants/Colors";
 
 const renderAddListIcon = (addItemToLists) => {
     return (
-      <TouchableOpacity onPress= {() => addItemToLists({text: "", isChecked: false, isNewItem: true})}>
+      <TouchableOpacity onPress= {() => addItemToLists({text: "", selectedDueDate: "", isChecked: false, isNewItem: true})}>
           <Text style={styles.icon}>+</Text>
       </TouchableOpacity>
     )
@@ -39,9 +39,10 @@ export default ({navigation}) => {
       <View style={styles.container}>
           <FlatList
             data={toDoItems}
-            renderItem={({item: {text, isChecked, isNewItem}, index}) => {
+            renderItem={({item: {text, selectedDueDate, isChecked, isNewItem}, index}) => {
               return <ToDoItem
                 text={text}
+                selectedDueDate={selectedDueDate}
                 isChecked={isChecked}
                 isNewItem={isNewItem}
                 onChecked={() => {
