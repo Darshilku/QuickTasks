@@ -72,7 +72,7 @@ const Screens = () =>
   );
 };
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
  /* useEffect(() => {
     if (firebase.auth().currentUser) {
         setIsAuthenticated(true);
